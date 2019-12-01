@@ -24,7 +24,7 @@
             </el-form>
         </div>
         <div class="table_container">
-            <el-table v-if="tableData.length > 0" :data="tableData" style="width: 100%" max-height="420" border :default-sort = "{prop: 'date', order: 'descending'}">
+            <el-table v-if="tableData.length > 0" :data="tableData" style="width: 100%" max-height="420" border :default-sort = "{prop: 'date', order: 'ascending'}">
                 <el-table-column type="index" label="序号" align='center' width="50">
                 </el-table-column>
                 <el-table-column prop="date" label="创建时间" align='center' width="125" sortable>
@@ -47,9 +47,11 @@
                         <span style="color:#f56767">- {{ scope.row.expend }}</span>
                     </template>
                 </el-table-column>
-                <el-table-column prop="cash" label="账户现金" align='center' width="120">
+                <el-table-column prop="cash" label="盈损情况" align='center' width="120">
                     <template slot-scope="scope">
-                        <span style="color:#4db3ff">{{ scope.row.cash }}</span>
+                        <span style="color:#4db3ff" v-if="scope.row.cash>0">盈利{{ scope.row.cash }}</span>
+                        <span style="color:#4db3ff" v-if="scope.row.cash<0">亏损{{ -scope.row.cash}}</span>
+                        <span style="color:#4db3ff" v-if="scope.row.cash==0">盈损持平</span>
                     </template>
                 </el-table-column>
                 <el-table-column prop="remark" label="备注" align='center' width="150">

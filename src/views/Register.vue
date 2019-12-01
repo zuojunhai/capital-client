@@ -2,7 +2,7 @@
     <div class="register">
         <section class="form_container">
             <div class="manage_tip">
-                <span class="title">公司资金流水系统</span>
+                <span class="title">中小型公司资金流水系统</span>
             </div>
             <el-form :model="registerUser" :rules="rules" class="registerForm" ref="registerForm" label-width="80px">
                 <el-form-item label="用户名" prop="name">

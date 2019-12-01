@@ -17,8 +17,9 @@
                     <el-form-item prop='expend' label="支出:">
                         <el-input type="expend" v-model="form.expend"></el-input>
                     </el-form-item>
-                    <el-form-item prop='cash' label="账户现金:">
-                        <el-input type="cash" v-model="form.cash"></el-input>
+                    <el-form-item prop='cash' label="盈损情况:">
+                        <el-input type="cash" v-model="form.cash" :disabled="true"></el-input>
+                        <el-button type="primary" size="mini" round @click="updateCash()">点击自动计算</el-button>
                     </el-form-item>
                     <el-form-item label="备注:">
                         <el-input type="textarea" v-model="form.remark"></el-input>
@@ -59,8 +60,7 @@
                     ],
                     expend: [
                         { required: true, message: "支出不能为空！", trigger: "blur" }
-                    ],
-                    cash: [{ required: true, message: "账户不能为空！", trigger: "blur" }]
+                    ]
                 }
             }
         },
@@ -82,6 +82,10 @@
                         })
                     }
                 })
+            },
+            updateCash(){
+                console.log(this.form.income-this.form.expend)
+                this.form.cash=this.form.income-this.form.expend
             }
         }
     }

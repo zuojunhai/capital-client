@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <div class="container">
-            <h1 class="title">公司资金流水系统</h1>
+            <h1 class="title">中小型公司资金流水系统</h1>
             <p class="lead">欢迎使用本系统</p>
         </div>
     </div>

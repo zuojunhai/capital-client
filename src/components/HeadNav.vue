@@ -2,7 +2,7 @@
     <header class="head-nav">
         <el-row>
             <el-col :span="6" class="logo-container">
-                <span class="title">公司资金流水系统</span>
+                <span class="title">中小型公司资金流水系统</span>
             </el-col>
             <el-col :span="6" class="user">
                 <div class="userinfo">

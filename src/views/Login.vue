@@ -2,7 +2,7 @@
     <div class="login">
         <section class="form_container">
             <div class="manage_tip">
-                <span class="title">公司资金流水系统</span>
+                <span class="title">中小型公司资金流水系统</span>
             </div>
             <el-form :model="loginUser" :rules="rules" class="loginForm" ref="loginForm" label-width="60px">
                 <el-form-item label="邮箱" prop="email">
