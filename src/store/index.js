@@ -30,6 +30,17 @@ const mutations = {
             state.user = {}
     }
 }
+//actions中方法的第一个参数：
+//action函数可以接收一个与store实例具有相同方法的属性context 这个属性中包括下面几部分：
+//context:{
+//    state,   等同于store.$state，若在模块中则为局部状态
+//    rootState,   等同于store.$state,只存在模块中
+//    commit,   等同于store.$commit
+//    dispatch,   等同于store.$dispatch
+//    getters   等同于store.$getters 
+//        }
+//常规写法调用的时候会使用context.commit，但更多的是使用es6的变量解构赋值，也就是直接在参数的
+//位置写自己想要的属性，如：{commit}。
 const actions = {
     setIsAutnenticated: ({ commit }, isAutnenticated) => {
         commit(types.SET_IS_AUTNENTIATED, isAutnenticated)

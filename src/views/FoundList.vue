@@ -21,7 +21,7 @@
         <div class="table_container">
             <el-table v-if="tableData.length > 0" :data="tableData" style="width: 100%" max-height="420" border
                 :default-sort="{prop: 'date', order: 'ascending'}">
-                <el-table-column type="index" label="序号" align='center' width="50">
+                <el-table-column type="index" label="序号" align='center' width="45">
                 </el-table-column>
                 <el-table-column prop="date" label="创建时间" align='center' width="125" sortable>
                     <template slot-scope="scope">
@@ -29,30 +29,33 @@
                         <span style="margin-left: 10px">{{ scope.row.date | dataFormat }}</span>
                     </template>
                 </el-table-column>
-                <el-table-column prop="type" label="收支类型" align='center' width="140">
+                <el-table-column prop="type1 type2" label="收支类型" align='center' width="240">
+                    <template slot-scope="scope">
+                        <span>{{ scope.row.type1 }}/{{scope.row.type2}}</span>
+                    </template>
                 </el-table-column>
-                <el-table-column prop="describe" label="收支描述" align='center' width="140">
+                <el-table-column prop="describe" label="收支描述" align='center' width="110">
                 </el-table-column>
-                <el-table-column prop="income" label="收入" align='center' width="120">
+                <el-table-column prop="income" label="收入" align='center' width="100">
                     <template slot-scope="scope">
                         <span style="color:#00d053">+ {{ scope.row.income }}</span>
                     </template>
                 </el-table-column>
-                <el-table-column prop="expend" label="支出" align='center' width="120">
+                <el-table-column prop="expend" label="支出" align='center' width="100">
                     <template slot-scope="scope">
                         <span style="color:#f56767">- {{ scope.row.expend }}</span>
                     </template>
                 </el-table-column>
-                <el-table-column prop="cash" label="盈损情况" align='center' width="120">
+                <el-table-column prop="cash" label="盈损情况" align='center' width="110">
                     <template slot-scope="scope">
                         <span style="color:#4db3ff" v-if="scope.row.cash>0">盈利{{ scope.row.cash }}</span>
                         <span style="color:#4db3ff" v-if="scope.row.cash<0">亏损{{ -scope.row.cash}}</span>
                         <span style="color:#4db3ff" v-if="scope.row.cash==0">盈损持平</span>
                     </template>
                 </el-table-column>
-                <el-table-column prop="remark" label="备注" align='center' width="150">
+                <el-table-column prop="remark" label="备注" align='center' width="110">
                 </el-table-column>
-                <el-table-column label="操作" prop="operation" align='center' fixed="right" width="180">
+                <el-table-column label="操作" prop="operation" align='center' fixed="right" width="160">
                     <template v-if="user.identity==='manager'" slot-scope="scope">
                         <el-button type="warning" icon='edit' size="small" @click='onEditMoney(scope.row)'>编辑
                         </el-button>
@@ -90,7 +93,8 @@
                     option: "edit"
                 },
                 form: {
-                    type: "",
+                    type1: "",
+                    type2: "",
                     describe: "",
                     income: "",
                     expend: "",
@@ -133,13 +137,15 @@
             },
             onEditMoney(row) {
                 //编辑
+                //row拿到的是scope.row 每一行的数据
                 this.dialog = {
                     show: true,
                     title: "修改资金信息",
                     option: "edit"
                 }
                 this.form = {
-                    type: row.type,
+                    type1: row.type1,
+                    type2: row.type2,
                     describe: row.describe,
                     income: row.income,
                     expend: row.expend,
@@ -164,7 +170,8 @@
                     option: "add"
                 }
                 this.form = {
-                    type: "",
+                    type1: "",
+                    type2: "",
                     describe: "",
                     income: "",
                     expend: "",
@@ -178,6 +185,8 @@
                 this.paginations.page_index = 1
                 this.paginations.page_size = page_size
                 //重新筛选数组中索引小于page_size的项
+                //数组的filter方法，filter() 方法创建一个新的数组，新数组中的元素是通过检查指定数组中符合条件的所有元素。
+                //方法有三个参数，第一个必须为每一项，第二个和第三个可选，分别为索引值和当前元素属于的数组对象
                 this.tableData = this.allTableData.filter((item, index) => {
                     return index < page_size;
                 })
@@ -185,9 +194,11 @@
             handleCurrentChange(page) {
                 //page为当前页  sortnum为当前页之前所有页面的所有数据,table为筛选后的数据
                 let sortnum = this.paginations.page_size * (page - 1)
+                //table为去掉了page页之前所有页的数据后，剩下的数据
                 let table = this.allTableData.filter((item, index) => {
                     return index >= sortnum
                 })
+                //在剩下的数据中又筛选当前页
                 this.tableData = table.filter((item, index) => {
                     return index < this.paginations.page_size;
                 })

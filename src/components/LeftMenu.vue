@@ -39,7 +39,7 @@
                         children: [{ path: "foundlist", name: "资金流水" }]
                     },
                     {
-                        icon: "fa-asterisk",
+                        icon: "el-icon-user-solid",
                         name: "信息管理",
                         path: "info",
                         children: [{ path: "infoshow", name: "个人信息" }]

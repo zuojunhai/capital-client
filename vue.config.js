@@ -1,6 +1,10 @@
 const path = require('path')
 const debug = process.env.NODE_ENV !== 'production'
 
+//在vuecli 2.x 的时候有vue.config.js和webpack.config.js
+//vuecli 3.x 后不在有上面两个文件 需要自己手动创建vue.config.js（里面内嵌了webpack的配置）
+//配置文件不懂的去vuecli官网查看vue.config.js
+
 module.exports = {
     publicPath: '/', // 根域上下文目录(在vue-cli.3.3版本后 baseUrl被废除了，因此这边要写成 publicPath。)
     outputDir: 'dist', // 构建输出目录
@@ -9,7 +13,7 @@ module.exports = {
     runtimeCompiler: true, // 运行时版本是否需要编译
     transpileDependencies: [], // 默认babel-loader忽略mode_modules，这里可增加例外的依赖包名
     productionSourceMap: true, // 是否在构建生产包时生成 sourceMap 文件，false将提高构建速度
-    configureWebpack: config => { // webpack配置，值位对象时会合并配置，为方法时会改写配置
+    configureWebpack: config => { // webpack配置，值为对象时会合并配置，为方法时会改写配置
         if (debug) { // 开发环境配置
             config.devtool = 'cheap-module-eval-source-map'
         } else { // 生产环境配置

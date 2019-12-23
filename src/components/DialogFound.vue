@@ -4,8 +4,11 @@
             <div class="form">
                 <el-form ref="form" :model="form" :rules="form_rules" label-width="120px" style="margin:10px;width:auto;">
                     <el-form-item label="收支类型:" >
-                        <el-select v-model="form.type" placeholder="收支类型">
-                            <el-option v-for="(formtype, index) in format_type_list" :key="index" :label="formtype" :value="formtype"></el-option>
+                        <el-select v-model="form.type1" placeholder="收入类型">
+                            <el-option v-for="(formtype, index) in format_type_list1" :key="index" :label="formtype" :value="formtype"></el-option>
+                        </el-select>
+                        <el-select v-model="form.type2" placeholder="支出类型">
+                            <el-option v-for="(formtype, index) in format_type_list2" :key="index" :label="formtype" :value="formtype"></el-option>
                         </el-select>
                     </el-form-item>
                     <el-form-item prop='describe' label="收支描述:">
@@ -37,21 +40,30 @@
 <script>
     export default {
         name:'logFound',
-        props:{
+        props:{//父组件通过属性绑定的形式向子组件传值，子组件要用pros里注册一下才能用
             dialog: Object,
             form: Object
         },
         data(){
             return {
-                format_type_list: [
-                    "提现",
-                    "提现手续费",
-                    "充值",
-                    "优惠券",
-                    "充值礼券",
-                    "转账"
+                format_type_list1: [
+                    "主营业务收入",
+                    "其他业务收入",
+                    "营业外收入",
+                    "投资收益",
+                    "利息收入",
+                    "无"
                 ],
-                form_rules: {
+                format_type_list2: [
+                    "主营业务成本",
+                    "主营业务税金及附加",
+                    "其他业务支出",
+                    "营业费用",
+                    "管理费用",
+                    "无"
+                ],
+                form_rules: {//表单验证规则，要在form表单里用:rules="form_rules"绑定一下。
+                             //之后表单的每一项用prop属性直接等于规则的每一项就ok了
                     describe: [
                         { required: true, message: "收支描述不能为空！", trigger: "blur" }
                     ],
@@ -78,6 +90,7 @@
                                 type: "success"
                             });
                             this.dialog.show = false
+                            //子项调用父项的方法，第一个参数是调用父项的方法名，后面的参数是父项方法所需的参数(子组件向父组件传值)
                             this.$emit("update")
                         })
                     }
