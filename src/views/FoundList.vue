@@ -126,7 +126,7 @@
         methods: {
             getProfile() {
                 //获取数据
-                this.$axios.get('/api/profiles')
+                this.$axios.get('/api/profiles/findAll')
                     .then(res => {
                         this.tableData = res.data
                         this.allTableData = res.data

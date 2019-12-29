@@ -43,6 +43,12 @@
                         name: "信息管理",
                         path: "info",
                         children: [{ path: "infoshow", name: "个人信息" }]
+                    },
+                    {
+                        icon: "el-icon-s-help",
+                        name: "图形数据",
+                        path: "echarts",
+                        children: [{ path: "pie", name: "饼图" },{ path: "brokenline", name: "折线图" }]
                     }
                 ]
             }

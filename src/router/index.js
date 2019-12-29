@@ -8,6 +8,8 @@ import Login from '../views/Login'
 import Home from '../views/Home'
 import InfoShow from '../views/InfoShow'
 import FoundList from '../views/FoundList'
+import Pie from '../views/Pie'
+import BrokenLine from '../views/BrokenLine'
 
 Vue.use(VueRouter)
 
@@ -18,6 +20,8 @@ const routes = [
       { path: '/home', name: 'home', component: Home },
       { path: '/infoshow', name: 'infoshow', component: InfoShow },
       { path: '/foundlist', name: 'foundlist', component: FoundList },
+      { path: '/pie', name: 'pie', component: Pie },
+      { path: '/brokenline', name: 'brokenline', component: BrokenLine },
     ]},
   {path: '/register', name: 'register', component:Register},
   {path: '/login', name: 'login', component:Login},
