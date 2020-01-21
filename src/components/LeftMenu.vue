@@ -40,7 +40,7 @@
                     },
                     {
                         icon: "el-icon-user-solid",
-                        name: "信息管理",
+                        name: "个人信息",
                         path: "info",
                         children: [{ path: "infoshow", name: "个人信息" }]
                     },
@@ -49,6 +49,18 @@
                         name: "图形数据",
                         path: "echarts",
                         children: [{ path: "pie", name: "饼图" },{ path: "brokenline", name: "折线图" }]
+                    },
+                    {
+                        icon: "el-icon-edit-outline",
+                        name: "备忘录",
+                        path: "note",
+                        children: [{ path: "addNotes", name: "添加备忘录" },{ path: "findNotes", name: "查看备忘录" }]
+                    },
+                    {
+                        icon: "el-icon-s-order",
+                        name: "月账单",
+                        path: "bill",
+                        children: [{ path: "bill", name: "账单报表" }]
                     }
                 ]
             }

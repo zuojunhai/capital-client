@@ -1,11 +1,26 @@
 <template>
     <div class="home">
         <div class="container">
-            <h1 class="title">中小型公司资金流水系统</h1>
+            <h1 class="title">中小型公司资金流水管理系统</h1>
             <p class="lead">欢迎使用本系统</p>
         </div>
     </div>
 </template>
+
+<script>
+export default{
+    data () {
+        return {
+            
+        }
+    },
+    computed: {
+            user() {
+                return this.$store.getters.user;
+            }
+        },
+}
+</script>
 
 <style scoped>
     .home {

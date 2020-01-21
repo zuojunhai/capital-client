@@ -10,6 +10,9 @@ import InfoShow from '../views/InfoShow'
 import FoundList from '../views/FoundList'
 import Pie from '../views/Pie'
 import BrokenLine from '../views/BrokenLine'
+import AddNotes from '../views/AddNotes'
+import FindNotes from '../views/FindNotes'
+import Bill from '../views/Bill'
 
 Vue.use(VueRouter)
 
@@ -22,6 +25,9 @@ const routes = [
       { path: '/foundlist', name: 'foundlist', component: FoundList },
       { path: '/pie', name: 'pie', component: Pie },
       { path: '/brokenline', name: 'brokenline', component: BrokenLine },
+      { path: '/addNotes', name: 'addNotes', component: AddNotes },
+      { path: '/findNotes', name: 'findNotes', component: FindNotes },
+      { path: '/bill', name: 'bill', component: Bill },
     ]},
   {path: '/register', name: 'register', component:Register},
   {path: '/login', name: 'login', component:Login},
