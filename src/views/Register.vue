@@ -17,12 +17,6 @@
                 <el-form-item label="确认密码" prop="password2">
                     <el-input type="password" v-model="registerUser.password2" placeholder="请输入确认密码"></el-input>
                 </el-form-item>
-                <el-form-item label="身份">
-                    <el-select  v-model="registerUser.identity" placeholder="请输选择身份">
-                        <el-option label="管理员" value="manager"></el-option>
-                        <el-option label="员工" value="employee"></el-option>
-                    </el-select>
-                </el-form-item>
                 <el-form-item>
                     <el-button type="primary" class="submit_btn" @click="submitForm('registerForm')">注册</el-button>
                 </el-form-item>
@@ -48,7 +42,7 @@
                     email: "",
                     password: "",
                     password2: "",
-                    identity: ""
+                    identity: "employee"
                 },
                 rules: {
                     name: [
