@@ -1,13 +1,19 @@
-# client
+## capital-client
+项目为资金流水管理系统前端代码
 
-npm install
+ ### 项目说明
 
+项目基于vue-cli3.0开发
 
-###后端代码
-capital-cilent为前端代码
+  ### 技术
 
-###后端代码
-https://github.com/zuojunhai/capital-server
-同样执行npm install安装所需的模块
-将capital-client目录放到capital-server目录中
-执行npm run dev 实现前后端连载
+使用vue+element-ui实现
+
+### 项目启动步骤
+
+1. 运行 npm intsall 安装相关依赖
+2. npm run start 启动服务
+
+### 后端代码地址
+
+地址：<https://github.com/zuojunhai/capital-server>
